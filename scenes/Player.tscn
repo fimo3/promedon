@@ -1,0 +1,71 @@
+[gd_scene load_steps=12 format=3 uid="uid://8jv4kbin84w6"]
+
+[ext_resource type="Script" path="res://scripts/player.gd" id="1_q6qfo"]
+[ext_resource type="Texture2D" uid="uid://cvkm4opk4n6ri" path="res://assets/bubble (2).PNG" id="2_vbjqu"]
+[ext_resource type="Texture2D" uid="uid://5v5idpsvvx57" path="res://assets/1.1.png" id="3_ysspv"]
+[ext_resource type="Texture2D" uid="uid://rs3ht1mbga00" path="res://assets/2.1.png" id="4_646mj"]
+[ext_resource type="Texture2D" uid="uid://bvfg7jif7pge7" path="res://assets/3.1.png" id="5_l5rwg"]
+[ext_resource type="Texture2D" uid="uid://bh0arsfj26o3c" path="res://assets/4.1.png" id="6_qqtka"]
+[ext_resource type="Texture2D" uid="uid://br4ss2acd4qhc" path="res://assets/5.1.png" id="7_7xul6"]
+[ext_resource type="Texture2D" uid="uid://yomrpe2j1ih0" path="res://assets/6.1.png" id="8_61jjj"]
+[ext_resource type="Texture2D" uid="uid://b64rhda2ym3rq" path="res://assets/7.1.png" id="9_npffc"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_utxcv"]
+radius = 30.0167
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_6yn81"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_vbjqu")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_ysspv")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_646mj")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_l5rwg")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_qqtka")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_7xul6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_61jjj")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_npffc")
+}],
+"loop": true,
+"name": &"death",
+"speed": 7.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_vbjqu")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="CharacterBody2D" type="CharacterBody2D"]
+position = Vector2(577, 337)
+collision_layer = 2
+collision_mask = 63
+script = ExtResource("1_q6qfo")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_utxcv")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+scale = Vector2(1.1875, 1.1875)
+sprite_frames = SubResource("SpriteFrames_6yn81")
+animation = &"death"
+autoplay = "default"
+frame = 2
+frame_progress = 0.302725

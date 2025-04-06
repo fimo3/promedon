@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://b1ctxaw7yovuj"]
+
+[ext_resource type="Script" path="res://scenes/finish.gd" id="1_3xjgh"]
+
+[node name="Finish2" type="Area2D"]
+position = Vector2(93, 319)
+script = ExtResource("1_3xjgh")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

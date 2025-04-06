@@ -1,0 +1,30 @@
+[gd_scene load_steps=4 format=3 uid="uid://cyoonvbjdd1es"]
+
+[ext_resource type="Script" path="res://scripts/bubble_right.gd" id="1_hjtwc"]
+[ext_resource type="Texture2D" uid="uid://d31y6ba42kl7b" path="res://assets/bubble_small.PNG" id="2_x134p"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_o6akb"]
+size = Vector2(341, 499.5)
+
+[node name="Bubble_right" type="Area2D"]
+collision_layer = 32
+collision_mask = 2
+script = ExtResource("1_hjtwc")
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="."]
+position = Vector2(-250, -144)
+rotation = -1.53149
+amount = 80
+speed_scale = 0.7
+texture = ExtResource("2_x134p")
+emission_shape = 3
+emission_rect_extents = Vector2(170, 1)
+gravity = Vector2(980, 0)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -144.25)
+rotation = -1.57019
+shape = SubResource("RectangleShape2D_o6akb")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_body_exited"]

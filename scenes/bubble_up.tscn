@@ -1,0 +1,27 @@
+[gd_scene load_steps=4 format=3 uid="uid://wgixoqbbb0e"]
+
+[ext_resource type="Script" path="res://scripts/bubble_up.gd" id="1_8uksm"]
+[ext_resource type="Texture2D" uid="uid://d31y6ba42kl7b" path="res://assets/bubble_small.PNG" id="2_nvuod"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vh2wn"]
+size = Vector2(341, 499.5)
+
+[node name="Bubble_Up" type="Area2D"]
+collision_layer = 32
+collision_mask = 2
+script = ExtResource("1_8uksm")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_vh2wn")
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="."]
+position = Vector2(0, 250)
+amount = 80
+speed_scale = 0.7
+texture = ExtResource("2_nvuod")
+emission_shape = 3
+emission_rect_extents = Vector2(170, 1)
+gravity = Vector2(0, -980)
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_body_exited"]

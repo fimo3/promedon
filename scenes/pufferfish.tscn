@@ -1,0 +1,76 @@
+[gd_scene load_steps=10 format=3 uid="uid://2c6le1vuft1k"]
+
+[ext_resource type="Texture2D" uid="uid://wjfaeb65fh3c" path="res://assets/pufferfish_big - Copy.PNG" id="1_xw3nc"]
+[ext_resource type="Texture2D" uid="uid://dhftct2w0p1y" path="res://assets/pufferfish_angry_almost_16.PNG" id="2_osnd5"]
+[ext_resource type="Texture2D" uid="uid://qw82m4m7gh15" path="res://assets/pufferfish_big _16.PNG" id="3_lsv0h"]
+[ext_resource type="Texture2D" uid="uid://crr3kf1xljook" path="res://assets/pufferfish_big - Copy - Copy (2) (2).PNG" id="4_4akiu"]
+[ext_resource type="Texture2D" uid="uid://3ka763gg1fkn" path="res://assets/pufferfish_small_yellow_1.PNG" id="5_5fnap"]
+[ext_resource type="Script" path="res://scripts/pufferfish.gd" id="5_bt5em"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_3hjba"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_lsv0h")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_osnd5")
+}],
+"loop": true,
+"name": &"angry",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_xw3nc")
+}],
+"loop": true,
+"name": &"big",
+"speed": 0.01
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_lsv0h")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_4akiu")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_lsv0h")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_5fnap")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ktw7i"]
+radius = 62.514
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ub8m0"]
+
+[node name="Pufferfish" type="AnimatedSprite2D"]
+sprite_frames = SubResource("SpriteFrames_3hjba")
+animation = &"idle"
+autoplay = "idle"
+script = ExtResource("5_bt5em")
+
+[node name="Big" type="Area2D" parent="."]
+collision_layer = 2
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Big"]
+shape = SubResource("CircleShape2D_ktw7i")
+
+[node name="Small" type="Area2D" parent="."]
+collision_layer = 2
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Small"]
+shape = SubResource("CircleShape2D_ub8m0")
+
+[connection signal="body_entered" from="Big" to="." method="_on_big_body_entered"]
+[connection signal="body_exited" from="Big" to="." method="_on_big_body_exited"]
+[connection signal="body_entered" from="Small" to="." method="_on_small_body_entered"]

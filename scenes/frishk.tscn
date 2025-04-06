@@ -1,0 +1,50 @@
+[gd_scene load_steps=8 format=3 uid="uid://deikuj34i8pf8"]
+
+[ext_resource type="Texture2D" uid="uid://fsvji3phf0fk" path="res://assets/fish1.PNG" id="1_1bm07"]
+[ext_resource type="Texture2D" uid="uid://i70or0tv6nw5" path="res://scenes/fish2.1.PNG" id="2_0jm81"]
+[ext_resource type="Texture2D" uid="uid://20dvc1qhtfx4" path="res://assets/fish2.PNG" id="2_7vvak"]
+[ext_resource type="Texture2D" uid="uid://ddl5lh7o720ie" path="res://assets/fish1.1.PNG" id="3_1fjll"]
+[ext_resource type="Script" path="res://scenes/frishk.gd" id="4_mg4ru"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_brxjr"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_7vvak")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_0jm81")
+}],
+"loop": true,
+"name": &"change_direction",
+"speed": 4.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_1bm07")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_1fjll")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 1.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_sxuk2"]
+size = Vector2(788, 384)
+
+[node name="frishk" type="AnimatedSprite2D"]
+sprite_frames = SubResource("SpriteFrames_brxjr")
+animation = &"change_direction"
+autoplay = "idle"
+script = ExtResource("4_mg4ru")
+
+[node name="frishk" type="Area2D" parent="."]
+collision_layer = 2
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="frishk"]
+shape = SubResource("RectangleShape2D_sxuk2")
+
+[connection signal="body_entered" from="frishk" to="." method="_on_body_entered"]
