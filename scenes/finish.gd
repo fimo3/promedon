@@ -2,7 +2,7 @@ extends Area2D
 
 @onready var player: CharacterBody2D = %CharacterBody2D
 @export var queue = false
-@export var scene_to_load: String = "res://lvl2.tscn"  # Set to the desired scene
+@export var scene_to_load: String = "res://lvl2.tscn" 
 
 func _process(delta: float) -> void:
 	if queue:

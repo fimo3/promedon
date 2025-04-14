@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://8jv4kbin84w6"]
+[gd_scene load_steps=21 format=3 uid="uid://8jv4kbin84w6"]
 
 [ext_resource type="Script" path="res://scripts/player.gd" id="1_q6qfo"]
 [ext_resource type="Texture2D" uid="uid://5v5idpsvvx57" path="res://assets/1.1.png" id="3_ysspv"]
@@ -16,19 +16,13 @@
 [ext_resource type="Texture2D" uid="uid://qrqqya3ai2f8" path="res://assets/bubble_3_2.png" id="14_iy0cp"]
 [ext_resource type="Texture2D" uid="uid://65pdblilk323" path="res://scenes/bubble_3_jump_2.png" id="15_xos48"]
 [ext_resource type="Texture2D" uid="uid://5tgtvrisgone" path="res://scenes/bubble_3_jump_1.png" id="16_onadd"]
-[ext_resource type="Texture2D" uid="uid://b5pssyo42sseg" path="res://scenes/sword.png" id="17_ffyjh"]
-[ext_resource type="Texture2D" uid="uid://copqewviv7r03" path="res://scenes/sword_burst.png" id="18_gbrq2"]
+[ext_resource type="Texture2D" uid="uid://d31y6ba42kl7b" path="res://assets/bubble_small.PNG" id="17_ogyyo"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_utxcv"]
-radius = 24.0208
+radius = 30.0167
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_6yn81"]
 animations = [{
-"frames": [],
-"loop": true,
-"name": &"burst",
-"speed": 5.0
-}, {
 "frames": [{
 "duration": 1.0,
 "texture": ExtResource("10_mlwu3")
@@ -92,7 +86,7 @@ animations = [{
 "texture": ExtResource("12_haeve")
 }, {
 "duration": 1.0,
-"texture": ExtResource("16_onadd")
+"texture": ExtResource("15_xos48")
 }],
 "loop": true,
 "name": &"jump_end",
@@ -103,34 +97,14 @@ animations = [{
 "texture": ExtResource("12_haeve")
 }, {
 "duration": 1.0,
-"texture": ExtResource("15_xos48")
+"texture": ExtResource("16_onadd")
 }],
 "loop": true,
 "name": &"jump_start",
 "speed": 1.0
 }]
 
-[sub_resource type="SpriteFrames" id="SpriteFrames_b7d0r"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": ExtResource("17_ffyjh")
-}, {
-"duration": 1.0,
-"texture": ExtResource("18_gbrq2")
-}],
-"loop": true,
-"name": &"burst",
-"speed": 2.5
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": ExtResource("17_ffyjh")
-}],
-"loop": true,
-"name": &"idle",
-"speed": 5.0
-}]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_0boge"]
 
 [node name="CharacterBody2D" type="CharacterBody2D"]
 position = Vector2(577, 337)
@@ -142,13 +116,28 @@ script = ExtResource("1_q6qfo")
 shape = SubResource("CircleShape2D_utxcv")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+scale = Vector2(1.1875, 1.1875)
 sprite_frames = SubResource("SpriteFrames_6yn81")
+animation = &"jump_end"
 autoplay = "default"
+frame_progress = 0.271975
 
-[node name="sword" type="AnimatedSprite2D" parent="."]
-position = Vector2(29, 5.72205e-06)
-scale = Vector2(0.0727387, 0.0727387)
-sprite_frames = SubResource("SpriteFrames_b7d0r")
-animation = &"idle"
-autoplay = "idle"
-frame_progress = 0.219687
+[node name="LandingParticles" type="GPUParticles2D" parent="."]
+position = Vector2(0, 37)
+emitting = false
+amount = 16
+process_material = SubResource("ShaderMaterial_0boge")
+texture = ExtResource("17_ogyyo")
+lifetime = 0.8
+speed_scale = 1.5
+explosiveness = 0.9
+
+[node name="JumpParticles" type="GPUParticles2D" parent="."]
+position = Vector2(0, 37)
+emitting = false
+amount = 16
+process_material = SubResource("ShaderMaterial_0boge")
+texture = ExtResource("17_ogyyo")
+lifetime = 0.8
+speed_scale = 1.5
+explosiveness = 0.9

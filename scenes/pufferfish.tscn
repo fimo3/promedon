@@ -1,9 +1,10 @@
-[gd_scene load_steps=10 format=3 uid="uid://2c6le1vuft1k"]
+[gd_scene load_steps=11 format=3 uid="uid://2c6le1vuft1k"]
 
 [ext_resource type="Texture2D" uid="uid://wjfaeb65fh3c" path="res://assets/pufferfish_big - Copy.PNG" id="1_xw3nc"]
 [ext_resource type="Texture2D" uid="uid://dhftct2w0p1y" path="res://assets/pufferfish_angry_almost_16.PNG" id="2_osnd5"]
 [ext_resource type="Texture2D" uid="uid://qw82m4m7gh15" path="res://assets/pufferfish_big _16.PNG" id="3_lsv0h"]
 [ext_resource type="Texture2D" uid="uid://crr3kf1xljook" path="res://assets/pufferfish_big - Copy - Copy (2) (2).PNG" id="4_4akiu"]
+[ext_resource type="Texture2D" uid="uid://cexf72ayxx4v" path="res://assets/pufferfish_3_1_0.png" id="4_pxwxa"]
 [ext_resource type="Texture2D" uid="uid://3ka763gg1fkn" path="res://assets/pufferfish_small_yellow_1.PNG" id="5_5fnap"]
 [ext_resource type="Script" path="res://scripts/pufferfish.gd" id="5_bt5em"]
 
@@ -30,13 +31,13 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("3_lsv0h")
+"texture": ExtResource("4_pxwxa")
 }, {
 "duration": 1.0,
 "texture": ExtResource("4_4akiu")
 }, {
 "duration": 1.0,
-"texture": ExtResource("3_lsv0h")
+"texture": ExtResource("4_pxwxa")
 }, {
 "duration": 1.0,
 "texture": ExtResource("5_5fnap")
