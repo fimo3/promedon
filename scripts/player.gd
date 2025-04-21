@@ -24,6 +24,7 @@ var current_stamina = 100
 var max_stamina = 100
 var stamina_regen_timer = 0.0
 var was_in_air = false
+var is_bursting = false
 
 @export var goUP = false
 @export var goDOWN = false
@@ -32,11 +33,14 @@ var was_in_air = false
 
 @onready var sprite = $AnimatedSprite2D
 @onready var shape = $CollisionShape2D
-@onready var stamina_indicator = $StaminaIndicator
+@onready var stamina_indicator = get_node("../UI/StaminaIndicator")
+@onready var sword = $sword
+
+
 
 func _ready():
-	stamina_indicator.radius = 16
-	stamina_indicator.position = Vector2(0, -50)
+	add_to_group("player")
+
 	update_stamina_display()
 
 func _physics_process(delta):
@@ -51,7 +55,19 @@ func _physics_process(delta):
 	elif current_stamina < max_stamina:
 		current_stamina = min(max_stamina, current_stamina + STAMINA_REGEN_RATE * delta)
 		update_stamina_display()
-	
+				
+	if Input.is_action_just_pressed("burst"):
+		is_bursting = true
+		await get_tree().create_timer(1).timeout
+		is_bursting = false
+
+		
+		
+	if is_bursting:
+		sword.play("burst")
+	else:
+		sword.play("idle")
+		
 	if !is_dashing:
 		velocity.y += GRAVITY * delta
 		
@@ -133,6 +149,7 @@ func handle_movement_input():
 			velocity.x = 2 * FAN_SPEED
 		else:
 			velocity.x = 0
+
 			
 	if Input.is_action_just_pressed("jump") and !is_on_ceiling() and double_jump and jumps > 0:
 		double_jump = false

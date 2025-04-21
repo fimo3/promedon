@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://8jv4kbin84w6"]
+[gd_scene load_steps=23 format=3 uid="uid://8jv4kbin84w6"]
 
 [ext_resource type="Script" path="res://scripts/player.gd" id="1_q6qfo"]
 [ext_resource type="Texture2D" uid="uid://5v5idpsvvx57" path="res://assets/1.1.png" id="3_ysspv"]
@@ -110,18 +110,18 @@ animations = [{
 "speed": 1.0
 }]
 
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_h3bco"]
+polygon = PackedVector2Array(4.02, -24.315, -7.265, -23.14, -15, -18, -20.72, -12.89, -24, -4, -23, 7, -17, 17, -8, 23, 2, 24, 9, 22, 18, 16, 22, 9, 24, 3, 22, -9, 16, -19)
+
 [sub_resource type="SpriteFrames" id="SpriteFrames_b7d0r"]
 animations = [{
 "frames": [{
-"duration": 1.0,
-"texture": ExtResource("17_ffyjh")
-}, {
 "duration": 1.0,
 "texture": ExtResource("18_gbrq2")
 }],
 "loop": true,
 "name": &"burst",
-"speed": 2.5
+"speed": 1.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -145,10 +145,12 @@ shape = SubResource("CircleShape2D_utxcv")
 sprite_frames = SubResource("SpriteFrames_6yn81")
 autoplay = "default"
 
+[node name="LightOccluder2D" type="LightOccluder2D" parent="AnimatedSprite2D"]
+occluder = SubResource("OccluderPolygon2D_h3bco")
+
 [node name="sword" type="AnimatedSprite2D" parent="."]
 position = Vector2(29, 5.72205e-06)
 scale = Vector2(0.0727387, 0.0727387)
 sprite_frames = SubResource("SpriteFrames_b7d0r")
-animation = &"idle"
+animation = &"burst"
 autoplay = "idle"
-frame_progress = 0.219687

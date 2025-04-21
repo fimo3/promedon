@@ -1,0 +1,53 @@
+[gd_scene load_steps=5 format=3 uid="uid://dcngqnn5ihlf"]
+
+[ext_resource type="Script" path="res://scenes/anglerfish.gd" id="1_taegg"]
+[ext_resource type="Texture2D" uid="uid://bbg24i565ph43" path="res://scenes/anglerfish.png" id="2_1ejy0"]
+
+[sub_resource type="Gradient" id="Gradient_anl3x"]
+offsets = PackedFloat32Array(0, 0.648045)
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_s6it8"]
+gradient = SubResource("Gradient_anl3x")
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(0, 0)
+
+[node name="Anglerfish" type="Node2D"]
+script = ExtResource("1_taegg")
+
+[node name="PointLight2D16" type="PointLight2D" parent="."]
+position = Vector2(-48.0001, 17)
+scale = Vector2(2.5, 2.5)
+energy = 3.18
+shadow_enabled = true
+texture = SubResource("GradientTexture2D_s6it8")
+
+[node name="PointLight2D15" type="PointLight2D" parent="."]
+position = Vector2(551, 115)
+scale = Vector2(3.71875, 3.71875)
+energy = 3.18
+shadow_enabled = true
+texture = SubResource("GradientTexture2D_s6it8")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(-120, 47)
+scale = Vector2(0.180718, 0.180718)
+texture = ExtResource("2_1ejy0")
+
+[node name="Sprite2D2" type="Sprite2D" parent="."]
+position = Vector2(392, 177)
+scale = Vector2(0.386477, 0.386477)
+texture = ExtResource("2_1ejy0")
+
+[node name="PointLight2D17" type="PointLight2D" parent="."]
+position = Vector2(311, -69)
+scale = Vector2(0.895622, 0.895622)
+energy = 3.18
+shadow_enabled = true
+texture = SubResource("GradientTexture2D_s6it8")
+
+[node name="Sprite2D3" type="Sprite2D" parent="."]
+position = Vector2(256, -49)
+scale = Vector2(0.135, 0.135)
+texture = ExtResource("2_1ejy0")
